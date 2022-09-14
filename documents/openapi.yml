@@ -1,0 +1,139 @@
+openapi: 3.0.2
+info:
+  title: "Sakana API"
+  version: "1.0.0"
+tags:
+  - name: "users"
+    description: "ユーザーAPI"
+paths:
+  /users:
+    get:
+      summary: "ユーザーを取得"
+      description: "ユーザーを取得"
+      tags:
+        - "users"
+      responses:
+        200:
+          description: "成功時"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  name:
+                    description: "名前"
+                    type: "string"
+                required:
+                  - "name"
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        name:
+          type: string
+          description: "名前"
+        email:
+          type: string
+          description: "メールアドレス"
+    Project:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        name:
+          type: string
+          description: "名前"
+    ProjectSectionOrder:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        project_id:
+          type: integer
+          required: true
+        section_id:
+          type: integer
+          required: true
+        sort_no:
+          type: integer
+          description: "順番"
+    Section:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        name:
+          type: string
+          description: "名前"
+    SectionTaskOrder:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        section_id:
+          type: integer
+          required: true
+        task_id:
+          type: integer
+          required: true
+        sort_no:
+          type: integer
+          description: "順番"
+    Task:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        name:
+          type: string
+          description: "名前"
+        deadline:
+          type: date
+          description: "期限"
+        description:
+          type: text
+          description: "詳細"
+        is_completed:
+          type: boolean
+          description: "完了ステータス"
+        user_id:
+          type: integer
+          description: "担当者(User)のid"
+    UserProjectRole:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          required: true
+        user_id:
+          type: integer
+          required: true
+        project_id:
+          type: integer
+          required: true
+        role:
+          type: integer
+          description: "権限"
