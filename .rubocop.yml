@@ -11,3 +11,6 @@ Style/FrozenStringLiteralComment:
 
 Documentation:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
