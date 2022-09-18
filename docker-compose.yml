@@ -20,3 +20,11 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  doc:
+    image: swaggerapi/swagger-ui
+    volumes:
+      - ./documents/openapi.yml:/usr/share/nginx/html/openapi.yml
+    environment:
+      API_URL: openapi.yml
+    ports:
+      - 8080:8080
