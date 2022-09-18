@@ -30,7 +30,5 @@ module Api
                        view_specs: false,
                        routing_specs: false
     end
-
-    Faker::Config.locale = :ja
   end
 end
